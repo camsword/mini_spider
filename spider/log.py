@@ -78,7 +78,7 @@ def init_log(log_path,
     return logger
 
 
-logger = init_log("./log/mini_spider",
+logger = init_log("../log/mini_spider",
                   "spider")
 
 if __name__ == "__main__":

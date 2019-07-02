@@ -8,7 +8,7 @@
 """
 
 import queue
-import log
+from spider import log
 
 logger = log.logger
 

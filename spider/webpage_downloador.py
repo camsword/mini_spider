@@ -7,7 +7,7 @@
 @time: 2019-06-30 07:56
 """
 import requests
-import log
+from spider import log
 
 logger = log.logger
 

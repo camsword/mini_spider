@@ -7,7 +7,7 @@
 @time: 2019-06-30 12:28
 """
 import queue
-import log
+from spider import log
 
 logger = log.logger
 

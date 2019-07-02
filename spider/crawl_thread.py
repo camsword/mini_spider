@@ -8,9 +8,9 @@
 """
 import time
 import threading
-import webpage_downloador
-import webpage_parse
-import log
+from spider import webpage_downloador
+from spider import webpage_parse
+from spider import log
 
 logger = log.logger
 

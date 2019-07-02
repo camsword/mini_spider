@@ -8,7 +8,7 @@
 """
 from urllib import parse as url_parse
 import bs4
-import log
+from spider import log
 
 logger = log.logger
 

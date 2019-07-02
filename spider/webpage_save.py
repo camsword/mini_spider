@@ -8,7 +8,7 @@
 """
 import os
 import threading
-import log
+from spider import log
 
 logger = log.logger
 

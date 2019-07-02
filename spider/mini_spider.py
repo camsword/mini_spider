@@ -11,11 +11,11 @@ import sys
 import argparse
 import re
 import configparser
-import log
-import crawl_thread
-import url_manager
-import result_queue
-import webpage_save
+from spider import log
+from spider import crawl_thread
+from spider import url_manager
+from spider import result_queue
+from spider import webpage_save
 
 logger = log.logger
 
