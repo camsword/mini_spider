@@ -51,7 +51,15 @@ class ResultQueue(object):
             logger.warn("队列中暂无待获取的结果")
 
     def task_done(self):
+        """
+        消息消费结束后通知队列
+        :return:
+        """
         self.result_queue.task_done()
 
     def join(self):
+        """
+        等待队列中所有的消息消费完成
+        :return:
+        """
         self.result_queue.join()

@@ -16,6 +16,7 @@ from spider import crawl_thread
 from spider import url_manager
 from spider import result_queue
 from spider import webpage_save
+from spider import spider_config
 
 logger = log.logger
 
@@ -26,8 +27,17 @@ def spider(config_path):
     :param config_path: 爬虫的配置文件路径
     :return:
     """
-    seedfile_path, result_path, max_depth, crawl_interval, \
-    crawl_timeout, thread_count, target_re = load_config(config_path)
+    # seedfile_path, result_path, max_depth, crawl_interval, \
+    # crawl_timeout, thread_count, target_re = load_config(config_path)
+
+    spider_config_obj = load_config(config_path)
+    seedfile_path = spider_config_obj.seedfile
+    result_path = spider_config_obj.result_path
+    max_depth = spider_config_obj.max_depth
+    crawl_interval = spider_config_obj.crawl_interval
+    crawl_timeout = spider_config_obj.crawl_timeout
+    thread_count = spider_config_obj.thread_count
+    target_re = spider_config_obj.target_re
 
     target_re = re.compile(target_re)  # 编译正则对象
     seeds = load_seeds(seedfile_path)  # 获取种子列表
@@ -100,7 +110,14 @@ def load_config(config_file):
                 thread_count = config.getint(spider_section, "thread_count")
                 target_re = config.get(spider_section, "target_re")
 
-                return seedfile, result_path, max_depth, crawl_interval, crawl_timeout, thread_count, target_re
+                # return seedfile, result_path, max_depth, crawl_interval, crawl_timeout, thread_count, target_re
+                return spider_config.SpiderConfig(seedfile,
+                                                  result_path,
+                                                  max_depth,
+                                                  crawl_interval,
+                                                  crawl_timeout,
+                                                  thread_count,
+                                                  target_re)
         except Exception as e:
             logger.error("读取配置文件出错，退出应用:%s" % e)
             sys.exit("读取配置文件出错，退出应用！")
